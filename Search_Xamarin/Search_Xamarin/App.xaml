@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Search_Xamarin.App">
+	<Application.Resources>
+
+		<!-- Application resource dictionary -->
+        <ResourceDictionary>
+
+            <Style x:Key="entrySearchStyle" TargetType="Entry">
+                <Setter Property="FontSize" Value="Large" />
+                <Setter Property="BackgroundColor" Value="White"/>
+                <Style.Triggers>
+                    <Trigger TargetType="Entry" Property="IsEnabled" Value="false">
+                        <Setter Property="BackgroundColor" Value="Black"/>
+                    </Trigger>
+                    <Trigger TargetType="Entry" Property="IsEnabled" Value="true">
+                        <Setter Property="BackgroundColor" Value="White"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+            <Style x:Key="buttonSearchStyle" TargetType="Button">
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="FontSize" Value="Large" />
+                <Setter Property="BackgroundColor" Value="Green"/>
+            </Style>
+
+        </ResourceDictionary>
+
+	</Application.Resources>
+</Application>
