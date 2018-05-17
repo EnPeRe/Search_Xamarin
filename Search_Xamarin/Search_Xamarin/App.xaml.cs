@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Search_Xamarin.Models;
+using Search_Xamarin.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,10 +15,24 @@ namespace Search_Xamarin
 		{
 			InitializeComponent();
 
-			MainPage = new Search_Xamarin.MainPage();
-		}
+            MainPage page = new MainPage();
+            MainViewModel mainViewModel = new MainViewModel();
 
-		protected override void OnStart ()
+            mainViewModel.DataList.Add(new Student { Name = "A", Age = 1 });
+
+            page.BindingContext = mainViewModel;
+
+            MainPage = new MainPage();
+            MainPage = page;
+
+            //MainViewModel mainViewModel = new MainViewModel();
+
+            //mainViewModel.DataList.Add(new Student { Name = "A", Age = 1 });
+
+            //mainViewModel.Init();
+        }
+
+        protected override void OnStart ()
 		{
 			// Handle when your app starts
 		}

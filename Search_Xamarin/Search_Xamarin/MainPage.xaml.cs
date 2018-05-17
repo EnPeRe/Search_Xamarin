@@ -13,7 +13,6 @@ namespace Search_Xamarin
 		public MainPage()
 		{
 			InitializeComponent();
-            BindingContext = new MainViewModel();
         }
     }
 }

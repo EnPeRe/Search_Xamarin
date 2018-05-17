@@ -8,14 +8,15 @@
         <ResourceDictionary>
 
             <Style x:Key="entrySearchStyle" TargetType="Entry">
+                <Setter Property="IsEnabled" Value="{Binding IsNotBusy, Mode=TwoWay}"/>
                 <Setter Property="FontSize" Value="Large" />
                 <Setter Property="BackgroundColor" Value="White"/>
                 <Style.Triggers>
-                    <Trigger TargetType="Entry" Property="IsEnabled" Value="false">
-                        <Setter Property="BackgroundColor" Value="Black"/>
-                    </Trigger>
                     <Trigger TargetType="Entry" Property="IsEnabled" Value="true">
-                        <Setter Property="BackgroundColor" Value="White"/>
+                        <Setter Property="BackgroundColor" Value="Yellow" />
+                    </Trigger>
+                    <Trigger TargetType="Entry" Property="IsEnabled" Value="false">
+                        <Setter Property="BackgroundColor" Value="Gray"/>
                     </Trigger>
                 </Style.Triggers>
             </Style>
@@ -24,7 +25,7 @@
                 <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
                 <Setter Property="VerticalOptions" Value="CenterAndExpand" />
                 <Setter Property="FontSize" Value="Large" />
-                <Setter Property="BackgroundColor" Value="Green"/>
+                <Setter Property="BackgroundColor" Value="Green" />
             </Style>
 
         </ResourceDictionary>

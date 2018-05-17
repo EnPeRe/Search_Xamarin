@@ -12,7 +12,7 @@ namespace Search_Xamarin.ViewModels
 {
     public class MainViewModel : BaseViewModel
     {
-        public ObservableCollection<Student> DataList { get; set; }
+        public ObservableCollection<Student> DataList = new ObservableCollection<Student>();
 
         private bool _isNotBusy;
 
@@ -53,6 +53,14 @@ namespace Search_Xamarin.ViewModels
                 _searchCommand = _searchCommand ?? new Command(async () => await this.SearchInList());
                 return _searchCommand;
             }
+        }
+
+        public void Init()
+        {
+            MainPage mainpage = new MainPage();
+            mainpage.BindingContext = this;
+            App.Current.MainPage = mainpage;
+            IsNotBusy = true;
         }
 
         private async Task SearchInList()

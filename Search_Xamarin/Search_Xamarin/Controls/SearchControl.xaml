@@ -17,19 +17,20 @@
 
                 <Entry Text="{Binding SearchText, Source={x:Reference Search}}" 
                        Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
-                       Style="{StaticResource entrySearchStyle}"
-                       IsEnabled="{Binding IsNotBusy}"/>
+                       Style="{StaticResource entrySearchStyle}"/>
+                <!--IsEnabled="{Binding IsNotBusy}"-->
                 <Button Text="Search" 
                         Grid.Row="0" Grid.Column="2" 
                         Command="{Binding SearchCommand, Source={x:Reference Search}}"
                         Style="{StaticResource buttonSearchStyle}"/>
             </Grid>
         </StackLayout>
+        
         <StackLayout>
-            <ListView ItemsSource="{Binding DataList}">
+            <ListView BackgroundColor="AliceBlue" ItemsSource="{Binding DataList}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextCell Text="{Binding DisplayName}"/>
+                        <TextCell Text="{Binding Name}"/>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
