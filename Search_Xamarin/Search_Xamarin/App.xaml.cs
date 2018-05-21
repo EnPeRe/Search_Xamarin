@@ -15,21 +15,7 @@ namespace Search_Xamarin
 		{
 			InitializeComponent();
 
-            MainPage page = new MainPage();
-            MainViewModel mainViewModel = new MainViewModel();
-
-            mainViewModel.DataList.Add(new Student { Name = "A", Age = 1 });
-
-            page.BindingContext = mainViewModel;
-
             MainPage = new MainPage();
-            MainPage = page;
-
-            //MainViewModel mainViewModel = new MainViewModel();
-
-            //mainViewModel.DataList.Add(new Student { Name = "A", Age = 1 });
-
-            //mainViewModel.Init();
         }
 
         protected override void OnStart ()

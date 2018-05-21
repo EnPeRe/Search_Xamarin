@@ -7,24 +7,38 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Search_Xamarin.Converters;
 
 namespace Search_Xamarin.ViewModels
 {
     public class MainViewModel : BaseViewModel
     {
-        public ObservableCollection<Student> DataList = new ObservableCollection<Student>();
+        private ObservableCollection<Student> _datalist;
 
-        private bool _isNotBusy;
-
-        public bool IsNotBusy
+        public ObservableCollection<Student> DataList
         {
             get
             {
-                return _isNotBusy;
+                return _datalist;
             }
             set
             {
-                _isNotBusy = value;
+                _datalist = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private bool _isBusy = false;
+
+        public bool IsBusy
+        {
+            get
+            {
+                return _isBusy;
+            }
+            set
+            {
+                _isBusy = value;
                 OnPropertyChanged();
             }
         }
@@ -55,20 +69,22 @@ namespace Search_Xamarin.ViewModels
             }
         }
 
-        public void Init()
-        {
-            MainPage mainpage = new MainPage();
-            mainpage.BindingContext = this;
-            App.Current.MainPage = mainpage;
-            IsNotBusy = true;
-        }
-
         private async Task SearchInList()
         {
-            IsNotBusy = false;
+            if (this.IsBusy) return;
+            this.IsBusy = true;
             await Task.Delay(2000);
-            //Rellenar Lista
-            IsNotBusy = true;
+            this.DataList = new ObservableCollection<Student>(this.List());
+            this.IsBusy = false;
+        }
+
+        private List<Student> List()
+        {
+            return new List<Student>()
+            {
+                new Student{Name="Hola"},
+                new Student{Name="Si"}
+            };
         }
 
     }

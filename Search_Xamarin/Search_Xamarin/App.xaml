@@ -1,21 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Search_Xamarin.App">
-	<Application.Resources>
+             x:Class="Search_Xamarin.App"
+             x:converter="Search_Xamarin.Converters">
+    <Application.Resources>
 
 		<!-- Application resource dictionary -->
         <ResourceDictionary>
 
             <Style x:Key="entrySearchStyle" TargetType="Entry">
-                <Setter Property="IsEnabled" Value="{Binding IsNotBusy, Mode=TwoWay}"/>
                 <Setter Property="FontSize" Value="Large" />
-                <Setter Property="BackgroundColor" Value="White"/>
                 <Style.Triggers>
-                    <Trigger TargetType="Entry" Property="IsEnabled" Value="true">
-                        <Setter Property="BackgroundColor" Value="Yellow" />
+                    <Trigger TargetType="Entry" Property="IsEnabled" Value="True">
+                        <Setter Property="BackgroundColor" Value="White" />
                     </Trigger>
-                    <Trigger TargetType="Entry" Property="IsEnabled" Value="false">
+                    <Trigger TargetType="Entry" Property="IsEnabled" Value="False">
                         <Setter Property="BackgroundColor" Value="Gray"/>
                     </Trigger>
                 </Style.Triggers>

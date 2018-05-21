@@ -2,8 +2,16 @@
 <StackLayout xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Search_Xamarin.Controls.SearchControl"
-             x:Name="Search">
-
+             x:Name="Search"
+             xmlns:local="clr-namespace:Search_Xamarin.Converters">
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:InvertBoolConverter x:Key="intToBool" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    
     <StackLayout>
         <StackLayout>
             <Grid>
@@ -15,10 +23,11 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <Entry Text="{Binding SearchText, Source={x:Reference Search}}" 
+                <Entry Text="{Binding SearchText, Source={x:Reference Search}}"
                        Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
-                       Style="{StaticResource entrySearchStyle}"/>
-                <!--IsEnabled="{Binding IsNotBusy}"-->
+                       Style="{StaticResource entrySearchStyle}"
+                       IsEnabled="{Binding IsBusy, Converter={StaticResource intToBool}, Mode=OneWay}"/>
+
                 <Button Text="Search" 
                         Grid.Row="0" Grid.Column="2" 
                         Command="{Binding SearchCommand, Source={x:Reference Search}}"
@@ -27,10 +36,10 @@
         </StackLayout>
         
         <StackLayout>
-            <ListView BackgroundColor="AliceBlue" ItemsSource="{Binding DataList}">
+            <ListView BackgroundColor="AliceBlue" ItemsSource="{Binding DataList, Mode=OneWay}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextCell Text="{Binding Name}"/>
+                        <TextCell Text="{Binding Name, Mode=OneWay}"/>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

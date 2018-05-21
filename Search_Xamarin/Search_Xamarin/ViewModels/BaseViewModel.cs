@@ -7,14 +7,14 @@ using System.Text;
 namespace Search_Xamarin.ViewModels
 {
 
-    public class BaseViewModel
+    public class BaseViewModel : INotifyPropertyChanged
     {
         #region Properties
-        public event PropertyChangedEventHandler propertyChanged;
+        public event PropertyChangedEventHandler PropertyChanged;
 
         protected void OnPropertyChanged([CallerMemberName]string propertyName = null)
         {
-            propertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         #endregion
 

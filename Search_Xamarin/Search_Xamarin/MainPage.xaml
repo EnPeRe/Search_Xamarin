@@ -6,14 +6,10 @@
              x:Class="Search_Xamarin.MainPage">
 
 
-    <Label Text="Welcome to Xamarin.Forms!" 
-           VerticalOptions="Center" 
-           HorizontalOptions="Center" />
 
     <StackLayout>
         <controls:SearchControl SearchText="{Binding SearchString}"
-                                SearchCommand="{Binding SearchCommand}">
+                                    SearchCommand="{Binding SearchCommand}">
         </controls:SearchControl>
     </StackLayout>
-
 </ContentPage>
