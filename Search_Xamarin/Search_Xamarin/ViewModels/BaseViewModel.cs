@@ -6,7 +6,6 @@ using System.Text;
 
 namespace Search_Xamarin.ViewModels
 {
-
     public class BaseViewModel : INotifyPropertyChanged
     {
         #region Properties
@@ -17,7 +16,5 @@ namespace Search_Xamarin.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         #endregion
-
     }
-
 }
